@@ -3,18 +3,28 @@
 }
 
 body {
-    background-color: #54757e;
+    background-image: url("images/diamondpattern.png");
+    background-color: rgb(45, 75, 83);
     padding: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #FFF3B0
 }
 
+main, header, footer {
+    background-color: #54757e;
+    width: 80vw;
+    margin: 0 auto;
+    padding: 1rem;
+    box-shadow: 10px 5px 20px #121f21;
+}
+
 header {
+    background-image: url("images/starpattern.png");
+    background-size: 1rem;
     border-style: double;
-    border-width: 10px;
-    margin: 20px;
-    background-color: #9E2A2B;
-    color: #540B0E; 
+    border-width: 1rem;
+    background-color: rgb(158, 42, 43);
+    color: rgb(55, 4, 6); 
 }
 
 #title, #description {
@@ -50,7 +60,8 @@ hr {
 }
 
 h2 {
-    color: #9E2A2B;
+    color: #760709;
+    text-transform: uppercase;
     font-family: "Passion One", sans-serif;
     font-weight: 400;
     font-style: normal;
