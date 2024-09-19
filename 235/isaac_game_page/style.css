@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'upheaval';
+    src: url(fonts/upheavtt.ttf);
+}
+
+#logo {
+    width: 25rem;
+}
+
+header span {
+    float: right;
+    padding-right: 1rem;
+}
+
+body {
+    background:linear-gradient(rgb(26, 25, 25), rgb(41, 9, 9));
+    color: white;
+    font-family: 'upheaval', sans-serif;
+    letter-spacing: 0.25rem;
+    width: 100%
+}
+
+h1 {
+    margin: -10px;
+    padding: 1rem;
+    color: red;
+    background-image: url("images/isaac_loading.png");
+    background-size: 100%;
+    background-position-y: 34rem;
+    border: 0.5rem solid white;
+    border-style: solid none solid none;
+}
+
+/*  an ugly solution, but gets the job done for a simple game page. */
+#image_top {
+    background-position-y: 40rem;
+}
+
+#image_middle {
+    background-position-y: 30rem;
+}
+
+#image_middle2 {
+    background-position-y: 20rem;
+}
+
+#image_bottom {
+    background-position-y: 10rem;
+}
+
+p, footer, blockquote {
+    padding: 1rem;
+}
+
+blockquote {
+    background-color: rgb(134, 20, 20);
+}
+
+ul{
+    display: inline-block;
+}
+
+
+

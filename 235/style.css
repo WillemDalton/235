@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+    border: 1px red ridge;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+main {
+    flex-grow: 2;
+}
