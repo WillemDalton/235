@@ -1,4 +1,4 @@
-DirectoryIndex homepage.html
+DirectoryIndex index.html
 
 <IfModule pagespeed_module>
   ModPagespeed off
