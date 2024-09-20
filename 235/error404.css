@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Space+Grotesk:wght@300..700&display=swap');
 
-.container {
-    overflow: hidden;
-}
-
 /* background stars */
 .stars {
     top: 0;
@@ -17,10 +13,6 @@
     z-index: -1;
 }
 
-header, #personal, #content, h3 {
-    border-bottom: 10px ridge greenyellow;
-}
-
 body {
     overflow-x: hidden;
     background-color: black;
@@ -29,14 +21,11 @@ body {
     height: 100%;
     color: white;
     padding: 1rem;
-}
-
-main {
     display:flex;
     flex-flow: 1 1 auto;
 }
 
-main, footer {
+main {
     font-family: "Space Grotesk", sans-serif; 
     font-weight: 400;
     font-style: normal;
@@ -48,43 +37,16 @@ h1, h2, h3 {
     font-weight: 400;
     font-style: normal;
     margin-top: 1rem;
+    font-size: 5rem;
 }
 
-
-#personal {
-    float: left;
-    width: 100%;   
-}
-
-#personal > img {
-    float: left;
-    padding: 1rem;
-    margin: 1rem;
-}
-
-#projects_gallery, #homeworks_gallery {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.project > h3, .homework > h3, .project > p, .homework > p, .project > a, .homework > a {
-    text-align: center;
-}
-
-.project > a, .homework > a {
-    display: block;
-}
-
-.project, .homework {
-    background-color: rgba(175, 255, 47, 0.1);
-    padding: 0.5rem;
-}
-
+h1, p {
+    margin-top: 10vmax;
+     text-align: center;
+    }
 
 p {
     font-size: larger;
-    text-align: justify;
 }
 
 .homework > p, .project > p {
@@ -97,43 +59,12 @@ p {
     /* border: 1px red ridge; */
 }
 
-.project_image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    width: 10vmax;
-    height: 10vmax;
-}
-
-
 #cube {
     overflow-y: hidden;
     flex-flow: 1 1 auto;
     z-index: -2;
     position: fixed;
     width: 100vw;
-    object-position: 40vw;
+    object-position: -40vw 10vw;
     margin-top: -50px;
-}
-
-footer {
-    padding-top: 1rem;
-    flex-flow: 0 1 auto;
-}
-
-a:link {
-   color: greenyellow; 
-}
-
-a:visited {
-    color:  rgb(0, 113, 30)
-}
-
-a:hover, a:focus {
-    color: rgb(214, 255, 152); 
-}
-
-a:active {
-    color:  rgb(0, 200, 50)
 }

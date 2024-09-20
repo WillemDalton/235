@@ -1,4 +1,5 @@
 DirectoryIndex index.html
+ErrorDocument 404 /whd1964/235/error.html
 
 <IfModule pagespeed_module>
   ModPagespeed off
