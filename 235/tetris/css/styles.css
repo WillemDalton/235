@@ -1,0 +1,34 @@
+/* Do everything in this file */
+
+h2, h3, h4, h5, h6 {
+    clear:both;
+    border-bottom: 2px red ridge;
+}
+
+figure {
+    width: 40%;
+    float: right;
+}
+
+figure > img {
+    width: 100%;
+    margin: 1rem;
+}
+
+.tet {
+    float: left;
+    width: 75%;
+    border: 1px red ridge;
+}
+
+main {
+    padding-bottom: 115rem;
+}
+
+footer {
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    background-color: white;
+    z-index: 1;
+}
