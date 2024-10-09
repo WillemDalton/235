@@ -1,0 +1,37 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 10fr 1fr;
+
+    grid-template-areas:
+        "hero header"
+        "hero main"
+        "footer footer";
+
+    width: 75%;
+    margin-left: 12.5%;
+}
+
+.header {
+    grid-area: header;
+}
+
+.hero {
+    grid-area: hero;
+}
+
+.main {
+    grid-area: main;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+body {
+    height: 100vh;
+}
+
+* {
+    border: 1px red ridge;
+}
