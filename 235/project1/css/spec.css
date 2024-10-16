@@ -1,34 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Zilla+Slab:ital,wght@0,500;0,700;1,400&display=swap');
 
-/* bright yellow -- rgb(252,185,22)
-    baby blue - rgb(15, 207, 242)
-    steel blue - rgb(41, 67, 91) (header text)
-    text gradient - rgb(105, 127, 144) -> rgb(46, 77, 99)
- */
+/* fonts used throughout the site */
+.medium {
+  font-family: "Zilla Slab", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.5;
+}
 
- /* fonts used throughout the site */
- .medium {
-    font-family: "Zilla Slab", serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 12px;
-    line-height: 1.5;
-  }
-  
-  .bold {
-    font-family: "Zilla Slab", serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 24px;
-  }
-  
-  .italic {
-    font-family: "Zilla Slab", serif;
-    font-weight: 400;
-    font-style: italic;
-  }
+.bold {
+  font-family: "Zilla Slab", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+}
 
-  body {
+.italic {
+  font-family: "Zilla Slab", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+body {
     height: 100vh;
 }
 
@@ -44,7 +38,7 @@
 
     max-width: 800px;
     margin: 0 auto;
-    margin-top: 1rem;
+    margin-top: 2.5rem;
 }
 
 .header {
@@ -54,34 +48,31 @@
 }
 
 .hero {
-    position: relative;
     grid-area: hero;
+    position: relative;
     background-image: radial-gradient(
         farthest-corner at 75% 0%,
-        rgb(155,155,155), rgb(100,100,100));
-    overflow: hidden;
+        rgb(155,155,155), rgb(58, 58, 58));
 }
 
 #apartmentHero {
-    z-index: 1;
-    object-position: -50vh 0vh;
+    object-position: -55vh 0vh;
     width: 100vh;
 }
 
 #note, #sidebar {
     position: absolute;
-    z-index: 100;
     background-color: #fcb916;
     color: #172a38;
 }
 
-
 #note {
-    width: 30%;
+    position: absolute;
+    width: 40%;
     padding: 1rem;
-    right: -10px;
+    padding-bottom: 0;
+    right: -1rem;
     top: 15vh;
-    overflow: visible; 
 }
 
 #note > img {
@@ -89,13 +80,14 @@
 }
 
 #note > h2 {
-    margin: 0.25rem 0 0.25rem 0;
+    font-size: 36px;
+    margin: 0.25rem 0 0 0;
 }
 
 #note > p {
     margin: 0.25rem 0 0.25rem 0;
-    line-height: 1.1rem;
-    font-size: 16px;
+    line-height: 1.4rem;
+    font-size: 24px;
 }
 
 #note span {
@@ -110,26 +102,24 @@
 
 #sidebar {
     width: 50%;
-    float: left;
-    left: 0px;
-    bottom: 0px;
-    padding: 0 0.5rem 1rem 3rem;
+    left: 0;
+    bottom: 0;
+    padding: 4rem 0.5rem 1rem 3rem;
 }
 
 #sidebar > h2 {
     width: 50%;
     line-height: 1;
-    margin: 2rem 0 0 0;
+    margin: 0 0 0 0;
 }
 
 #sidebar > .medium {
-    margin: 0 0 0 0;
-    white-space: pre-wrap;
     display: inline;
+    white-space: pre-wrap;
 }
 
 .main {
-    padding: 0 1rem 0 1rem;
+    padding: 2.5rem 0 0 3rem;
 }
 
 #mainBlurb {
@@ -139,75 +129,75 @@
 
 #dropcap {
     float: inline-start;
+    color: rgb(252,185,22);
     font-size: 10vh;
     line-height: 10vh;
-    color: rgb(252,185,22);
-}
-
-.main > p {
-    white-space: pre-wrap;
-    display: inline;
-    background: -webkit-linear-gradient(#697f90, #2E4D63);
-    background-size: 100%;
-    background-clip: text; 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .modernHomeImage {
     position:relative;
+    float:left;
+    left: -12rem;
     height: 10rem;
     width: 20rem;
-    border: 1px red ridge;
+    margin-top: 2.5rem;
+}
+
+.modernHomeImage > p {
+    position:relative;
+    left: 24rem;
+    bottom: 3rem;
+    height: 10rem;
+    width: 10rem;
 }
 
 .modernHomeImage > img {
+    position:absolute;
     height: 100%;
     width: 100%;
-    position:absolute;
 }
 
 #modernHomeDetail {
+    position:absolute;
+    background-color: rgb(252,185,22);
     right: 0;
     height: 100%;
     width: 2.5%;
-    position:absolute;
-    background-color: rgb(252,185,22);
     z-index: 1;
+}
+
+#attention {
+    position: relative;
+    left: -10rem;  
+    width: 120%;
 }
 
 #attention> h1 {
     color: rgb(252,185,22);
-    font-size: 48px;
+    font-size: 64px;
 }
 
+/* really awesome solution I saw in documentation for putting an image right before/after text! */
 #attention > h1:after {
     content:"";
     position:absolute;
-    height: 7.5rem;
-    width:  7.5rem;
-    margin-left: 1rem;
     background-image:url('../media/leftarrow.svg');
     background-repeat: no-repeat;
+    height: 10rem;
+    width:  10rem;
+    margin-left: 1rem;
 }
 
 
 .footer {
+    grid-area: footer;
     place-self: center;
     justify-self: right;
-    grid-area: footer;
-    color:#a0a7ac
+    color:#a0a7ac;
+    padding: 2.5rem 0 2.5rem 0;
 }
 
 .pageNum {
-    font-family: "Zilla Slab", serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 12px;
-    color:#000000
+    color:#000000;
+    font-size: 16px;
 }
-
-/* 
-* {
-    border: 1px red ridge;
-} */
