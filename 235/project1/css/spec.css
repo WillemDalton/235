@@ -29,9 +29,8 @@
 
 #wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: 1fr 10fr 1fr;
-
     grid-template-areas:
         "hero header"
         "hero main"
@@ -44,6 +43,8 @@
 
 .header {
     grid-area: header;
+    justify-self: right;
+    color:#a0a7ac
 }
 
 .hero {
@@ -95,9 +96,9 @@
 }
 
 #dropcap {
-    float: left;
-    font-size: 20vh;
-    line-height: 20vh;
+    float: inline-start;
+    font-size: 10vh;
+    line-height: 10vh;
     color: rgb(252,185,22);
 }
 
@@ -111,15 +112,59 @@
     -webkit-text-fill-color: transparent;
 }
 
-.footer {
-    grid-area: footer;
+#modernHomeImage {
+    position:relative;
+    width: 25vw;
+    height: 15vh;
+    overflow: hidden;
+}
 
+#modernHomeImage > img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#modernHomeDetail {
+    position: absolute;
+    background-color: rgb(252,185,22);
+    width: 2.5%;
+    height: 100%;
+    z-index: 1;
+    left: 97.5%;
+    right: 0;
+
+}
+
+.main > h1 {
+    color: rgb(252,185,22);
+    font-size: 48px;
+}
+
+.main > img {
+    width: 5rem;
+}
+
+.footer {
+    place-self: center;
+    justify-self: right;
+    grid-area: footer;
+    color:#a0a7ac
+}
+
+.pageNum {
+    font-family: "Zilla Slab", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    color:#000000
 }
 
 body {
     height: 100vh;
 }
 /* 
+
 * {
     border: 1px red ridge;
 } */
