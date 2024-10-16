@@ -6,6 +6,7 @@
     text gradient - rgb(105, 127, 144) -> rgb(46, 77, 99)
  */
 
+ /* fonts used throughout the site */
  .medium {
     font-family: "Zilla Slab", serif;
     font-weight: 500;
@@ -27,6 +28,11 @@
     font-style: italic;
   }
 
+  body {
+    height: 100vh;
+}
+
+/* main grid element */
 #wrapper {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -52,29 +58,62 @@
     grid-area: hero;
     background-image: radial-gradient(
         farthest-corner at 75% 0%,
-        rgb(155,155,155
-        ), rgb(100,100,100));
-    
+        rgb(155,155,155), rgb(100,100,100));
     overflow: hidden;
 }
 
 #apartmentHero {
     z-index: 1;
-    object-position: -25vh 0;
-    width: 125%;
+    object-position: -50vh 0vh;
+    width: 100vh;
+}
+
+#note, #sidebar {
+    position: absolute;
+    z-index: 100;
+    background-color: #fcb916;
+    color: #172a38;
+}
+
+
+#note {
+    width: 30%;
+    padding: 1rem;
+    right: -10px;
+    top: 15vh;
+    overflow: visible; 
+}
+
+#note > img {
+    width: 48px;
+}
+
+#note > h2 {
+    margin: 0.25rem 0 0.25rem 0;
+}
+
+#note > p {
+    margin: 0.25rem 0 0.25rem 0;
+    line-height: 1.1rem;
+    font-size: 16px;
+}
+
+#note span {
+    color: white;
+}
+
+#commentBottom {
+    position: relative;
+    top: 2.5rem;
+    left: -1rem;
 }
 
 #sidebar {
-    position: absolute;
-    z-index: 100;
     width: 50%;
-    background-color: #fcb916;
     float: left;
     left: 0px;
     bottom: 0px;
-    padding-left: 3rem;
-    padding-right: 0.5rem;
-    padding-bottom: 1rem;
+    padding: 0 0.5rem 1rem 3rem;
 }
 
 #sidebar > h2 {
@@ -89,10 +128,13 @@
     display: inline;
 }
 
-
 .main {
     padding: 0 1rem 0 1rem;
-    columns: 2;
+}
+
+#mainBlurb {
+    column-count: 2;
+    column-gap: 30px;
 }
 
 #dropcap {
@@ -112,38 +154,43 @@
     -webkit-text-fill-color: transparent;
 }
 
-#modernHomeImage {
+.modernHomeImage {
     position:relative;
-    width: 25vw;
-    height: 15vh;
-    overflow: hidden;
+    height: 10rem;
+    width: 20rem;
+    border: 1px red ridge;
 }
 
-#modernHomeImage > img {
-    position: absolute;
+.modernHomeImage > img {
     height: 100%;
     width: 100%;
+    position:absolute;
 }
 
 #modernHomeDetail {
-    position: absolute;
-    background-color: rgb(252,185,22);
-    width: 2.5%;
-    height: 100%;
-    z-index: 1;
-    left: 97.5%;
     right: 0;
-
+    height: 100%;
+    width: 2.5%;
+    position:absolute;
+    background-color: rgb(252,185,22);
+    z-index: 1;
 }
 
-.main > h1 {
+#attention> h1 {
     color: rgb(252,185,22);
     font-size: 48px;
 }
 
-.main > img {
-    width: 5rem;
+#attention > h1:after {
+    content:"";
+    position:absolute;
+    height: 7.5rem;
+    width:  7.5rem;
+    margin-left: 1rem;
+    background-image:url('../media/leftarrow.svg');
+    background-repeat: no-repeat;
 }
+
 
 .footer {
     place-self: center;
@@ -160,11 +207,7 @@
     color:#000000
 }
 
-body {
-    height: 100vh;
-}
 /* 
-
 * {
     border: 1px red ridge;
 } */
