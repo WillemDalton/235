@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Zilla+Slab:ital,wght@0,500;0,700;1,400&display=swap');
+
+/* fonts used throughout the site */
+.medium {
+  font-family: "Zilla Slab", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.bold {
+  font-family: "Zilla Slab", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.italic {
+  font-family: "Zilla Slab", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+body {
+    height: 100vh;
+}
+
+/* main grid element */
+#wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 1fr 10fr 1fr;
+    grid-template-areas:
+        "hero header"
+        "hero main"
+        "footer footer";
+
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 2.5rem;
+}
+
+.header {
+    grid-area: header;
+    justify-self: right;
+    color:#a0a7ac
+}
+
+.hero {
+    grid-area: hero;
+    position: relative;
+    background-image: radial-gradient(
+        farthest-corner at 75% 0%,
+        rgb(155,155,155), rgb(58, 58, 58));
+}
+
+#apartmentHero {
+    object-position: -55vh 0vh;
+    width: 100vh;
+}
+
+#note, #sidebar {
+    position: absolute;
+    background-color: #fcb916;
+    color: #172a38;
+}
+
+#note {
+    position: absolute;
+    width: 40%;
+    padding: 1rem;
+    padding-bottom: 0;
+    right: -1rem;
+    top: 15vh;
+}
+
+#note > img {
+    width: 48px;
+}
+
+#note > h2 {
+    font-size: 36px;
+    margin: 0.25rem 0 0 0;
+}
+
+#note > p {
+    margin: 0.25rem 0 0.25rem 0;
+    line-height: 1.4rem;
+    font-size: 24px;
+}
+
+#note span {
+    color: white;
+}
+
+#commentBottom {
+    position: relative;
+    top: 2.5rem;
+    left: -1rem;
+}
+
+#sidebar {
+    width: 50%;
+    left: 0;
+    bottom: 0;
+    padding: 4rem 0.5rem 1rem 3rem;
+}
+
+#sidebar > h2 {
+    width: 50%;
+    line-height: 1;
+    margin: 0 0 0 0;
+}
+
+#sidebar > .medium {
+    display: inline;
+    white-space: pre-wrap;
+}
+
+.main {
+    padding: 2.5rem 0 0 3rem;
+}
+
+#mainBlurb {
+    column-count: 2;
+    column-gap: 30px;
+}
+
+#dropcap {
+    float: inline-start;
+    color: rgb(252, 114, 22);
+    font-size: 10vh;
+    line-height: 10vh;
+}
+
+.modeling {
+    position:relative;
+    float:left;
+    left: -12rem;
+    height: 10rem;
+    width: 20rem;
+    margin-top: 2.5rem;
+}
+
+.modeling > p {
+    position:relative;
+    left: 24rem;
+    bottom: 3rem;
+    height: 10rem;
+    width: 10rem;
+}
+
+.modeling > img {
+    position:absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#modelingDetail {
+    position:absolute;
+    background-color: rgb(252,185,22);
+    right: 0;
+    height: 100%;
+    width: 2.5%;
+    z-index: 1;
+}
+
+#attention {
+    position: relative;
+    left: -10rem;  
+    width: 120%;
+}
+
+#attention> h1 {
+    color: rgb(252,185,22);
+    font-size: 64px;
+}
+
+/* really awesome solution I saw in documentation for putting an image right before/after text! */
+#attention > h1:after {
+    content:"";
+    position:absolute;
+    background-image:url('../media/leftarrow.svg');
+    background-repeat: no-repeat;
+    height: 10rem;
+    width:  10rem;
+    margin-left: 1rem;
+}
+
+
+.footer {
+    grid-area: footer;
+    place-self: center;
+    justify-self: right;
+    color:#a0a7ac;
+    padding: 2.5rem 0 2.5rem 0;
+}
+
+.pageNum {
+    color:#000000;
+    font-size: 16px;
+}
