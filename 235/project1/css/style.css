@@ -52,17 +52,17 @@ body {
     position: relative;
     background-image: radial-gradient(
         farthest-corner at 75% 0%,
-        rgb(155,155,155), rgb(58, 58, 58));
+        rgb(97, 97, 97), rgb(0, 0, 0));
 }
 
-#apartmentHero {
-    object-position: -55vh 0vh;
-    width: 100vh;
+#halberdHero {
+    object-position: -5vh 0vh;
+    width: 100%;
 }
 
 #note, #sidebar {
     position: absolute;
-    background-color: #fcb916;
+    background-color: rgb(252, 114, 22);
     color: #172a38;
 }
 
@@ -118,6 +118,21 @@ body {
     white-space: pre-wrap;
 }
 
+#sidebar > a {
+    color:white;
+}
+#sidebar > a:visited {
+    color:rgb(230, 230, 230);
+}
+
+#sidebar > a:hover {
+    color:#ffe600;
+}
+
+#sidebar > a:focus, #sidebar > a:active {
+    color:rgb(187, 143, 0);
+}
+
 .main {
     padding: 2.5rem 0 0 3rem;
 }
@@ -141,6 +156,7 @@ body {
     height: 10rem;
     width: 20rem;
     margin-top: 2.5rem;
+    overflow:hidden;
 }
 
 .modeling > p {
@@ -153,13 +169,12 @@ body {
 
 .modeling > img {
     position:absolute;
-    height: 100%;
-    width: 100%;
+    height: 110%;
 }
 
 #modelingDetail {
     position:absolute;
-    background-color: rgb(252,185,22);
+    background-color: rgb(252, 114, 22);
     right: 0;
     height: 100%;
     width: 2.5%;
@@ -173,7 +188,7 @@ body {
 }
 
 #attention> h1 {
-    color: rgb(252,185,22);
+    color: #fc7216;
     font-size: 64px;
 }
 
@@ -181,7 +196,7 @@ body {
 #attention > h1:after {
     content:"";
     position:absolute;
-    background-image:url('../media/leftarrow.svg');
+    background-image:url('../media/leftarrowyellow.svg');
     background-repeat: no-repeat;
     height: 10rem;
     width:  10rem;
