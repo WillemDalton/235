@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Zilla+Slab:ital,wght@0,500;0,700;1,400&display=swap');
 
+* {
+    border: 1px red ridge;
+}
+
+
 /* fonts used throughout the site */
 .medium {
   font-family: "Zilla Slab", serif;
@@ -29,22 +34,73 @@ body {
 /* main grid element */
 #wrapper {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: 1fr 10fr 1fr;
+    grid-template-rows: 75px 5fr 10fr 75px;
     grid-template-areas:
-        "hero header"
-        "hero main"
-        "footer footer";
+        "header"
+        "hero"
+        "main"
+        "footer";
+    margin: 0;
+}
 
-    max-width: 800px;
-    margin: 0 auto;
-    margin-top: 2.5rem;
+@media screen and (min-width: 850px) {
+    #wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: 1fr 10fr 1fr;
+        grid-template-areas:
+            "hero header"
+            "hero main"
+            "footer footer";
+    
+        max-width: 1000px;
+        margin: 0 auto;
+        margin-top: 2.5rem;
+    } 
+
+    .blurb {
+        column-count: 2;
+        column-gap: 30px;
+    }
+
+    .main {
+        padding: 2.5rem 0 0 3rem;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    * {
+        overflow-x: hidden;
+    }
+
+    body {
+        height: 100%;   
+        overflow: hidden;
+    }
+
 }
 
 .header {
-    grid-area: header;
-    justify-self: right;
-    color:#a0a7ac
+    display: flex;
+    height: 100%;
+    grid-area: header;  
+    background-color: rgb(252, 114, 22);
+    color:#a0a7ac;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+
+.header > a {
+    padding-left: 1rem;
+    margin-left: 0.5rem;
+    border-left: 2px white solid;
+}
+
+.header > a:first-child {
+    border-left: none;
 }
 
 .hero {
@@ -53,6 +109,7 @@ body {
     background-image: radial-gradient(
         farthest-corner at 75% 0%,
         rgb(97, 97, 97), rgb(0, 0, 0));
+    overflow: hidden;   
 }
 
 #halberdHero {
@@ -101,7 +158,7 @@ body {
 }
 
 #sidebar {
-    width: 50%;
+    width: 100%;
     left: 0;
     bottom: 0;
     padding: 4rem 0.5rem 1rem 3rem;
@@ -113,67 +170,54 @@ body {
     margin: 0 0 0 0;
 }
 
-#sidebar > .medium {
-    display: inline;
-    white-space: pre-wrap;
+#sidebar > p {
+    width: 75%;
 }
 
-#sidebar > a {
+a, #sidebar > a {
     color:white;
 }
-#sidebar > a:visited {
+a:visited, #sidebar > a:visited {
     color:rgb(230, 230, 230);
 }
 
-#sidebar > a:hover {
+a:hover, #sidebar > a:hover {
     color:#ffe600;
 }
 
-#sidebar > a:focus, #sidebar > a:active {
+a:focus, a:active, #sidebar > a:focus, #sidebar > a:active {
     color:rgb(187, 143, 0);
 }
 
 .main {
-    padding: 2.5rem 0 0 3rem;
-}
-
-#mainBlurb {
-    column-count: 2;
-    column-gap: 30px;
+    overflow:visible;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 #dropcap {
-    float: inline-start;
+    float: left;
     color: rgb(252, 114, 22);
-    font-size: 10vh;
-    line-height: 10vh;
+    font-size: 400%;
+    line-height: 85%;
+    overflow: hidden;
 }
 
-.modeling {
-    position:relative;
-    float:left;
-    left: -12rem;
+.attentionImg {   
+    position: relative;
     height: 10rem;
-    width: 20rem;
+    width: 100%;
     margin-top: 2.5rem;
     overflow:hidden;
 }
 
-.modeling > p {
-    position:relative;
-    left: 24rem;
-    bottom: 3rem;
-    height: 10rem;
-    width: 10rem;
+.attentionImg > img {
+    position:absolute;
+    width: 100%;
 }
 
-.modeling > img {
-    position:absolute;
-    height: 110%;
-}
-
-#modelingDetail {
-    position:absolute;
+.attentionDetail {
+    position: absolute;
     background-color: rgb(252, 114, 22);
     right: 0;
     height: 100%;
@@ -181,19 +225,17 @@ body {
     z-index: 1;
 }
 
-#attention {
-    position: relative;
-    left: -10rem;  
-    width: 120%;
+.attention {
+    width: 100%;
 }
 
-#attention> h1 {
+.attention> h1 {
     color: #fc7216;
-    font-size: 64px;
+    font-size: 300%;
 }
 
 /* really awesome solution I saw in documentation for putting an image right before/after text! */
-#attention > h1:after {
+.attention > h1:after {
     content:"";
     position:absolute;
     background-image:url('../media/leftarrowyellow.svg');
@@ -210,6 +252,8 @@ body {
     justify-self: right;
     color:#a0a7ac;
     padding: 2.5rem 0 2.5rem 0;
+    overflow:visible;
+    width: 100%;
 }
 
 .pageNum {
