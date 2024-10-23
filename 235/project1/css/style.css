@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Zilla+Slab:ital,wght@0,500;0,700;1,400&display=swap');
 
-/* * {
-    border: 1px red ridge;
-} */
-
-
 /* fonts used throughout the site */
 .medium {
   font-family: "Zilla Slab", serif;
@@ -27,6 +22,10 @@
   font-style: italic;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     height: 100vh;
 }
@@ -34,7 +33,7 @@ body {
 /* main grid element */
 #wrapper {
     display: grid;
-    grid-template-rows: 75px 5fr 10fr 75px;
+    grid-template-rows: 75px 500px 1fr 75px;
     grid-template-areas:
         "header"
         "hero"
@@ -43,6 +42,7 @@ body {
     margin: 0;
 }
 
+/* media queries for switching to a wider, desktop mode */
 @media screen and (min-width: 850px) {
     #wrapper {
         display: grid;
@@ -58,6 +58,7 @@ body {
         margin-top: 2.5rem;
     } 
 
+    /* on desktop, we should have two columns for text */
     .blurb {
         column-count: 2;
         column-gap: 30px;
@@ -66,8 +67,27 @@ body {
     .main {
         padding: 2.5rem 0 0 3rem;
     }
+
+    #title {
+        top:75px;
+        opacity: 0.9;
+    }
+
+    #halberdHero, #checkeredHero, #finalHero {
+        position: relative;
+        width: 100%;
+    }
+
+    #checkeredHero {
+        top: -10rem;
+    }
+
+    #finalHero {
+        top: -20rem;
+    }
 }
 
+/* special media queries for mobile */
 @media screen and (max-width: 850px) {
     * {
         overflow-x: hidden;
@@ -78,20 +98,40 @@ body {
         overflow: hidden;
     }
 
+    #commentBottom {
+        display: none;
+    }
+
+    #title {
+        top: 0;
+        opacity: 0.75;
+    }
+
+    #halberdHero, #checkeredHero, #finalHero {
+        position:absolute;
+        width: 50%;
+    }
+
+    #checkeredHero {
+        width: 60%;
+    }
+
+    #finalHero{
+        width:60%;
+        right:0;
+        left: 60%;
+    }
 }
 
 .header {
     display: flex;
-    height: 100%;
     grid-area: header;  
     background-color: rgb(252, 114, 22);
     color:#a0a7ac;
-    width: 100%;
     justify-content: center;
-    justify-items: center;
     align-items: center;
+    width: 100%;
 }
-
 
 .header > a {
     padding-left: 1rem;
@@ -99,6 +139,7 @@ body {
     border-left: 2px white solid;
 }
 
+/* we dont want a divider next to our first element */
 .header > a:first-child {
     border-left: none;
 }
@@ -109,65 +150,72 @@ body {
     background-image: radial-gradient(
         farthest-corner at 75% 0%,
         rgb(97, 97, 97), rgb(0, 0, 0));
+    background-color: rgb(97, 97, 97);
     overflow: hidden;   
 }
 
 #halberdHero {
     object-position: -5vh 0vh;
-    width: 100%;
 }
 
-#note, #sidebar {
+#checkeredHero {
+    object-position: 10vh 0vh;
+    z-index: 2;
+}
+
+#finalHero {
+    object-position: -10vh 0vh;
+    opacity: 0.7;
+    z-index: 3;
+}
+
+#title, #sidebar {
     position: absolute;
     background-color: rgb(252, 114, 22);
+    width: 100%;
     color: #172a38;
+    z-index: 5;
 }
 
-#note {
-    position: absolute;
-    width: 40%;
+#sidebar > h2 {
+    overflow-y: hidden;
+}
+
+#title {
     padding: 1rem;
     padding-bottom: 0;
-    right: -1rem;
-    top: 15vh;
 }
 
-#note > img {
+#title > img {
     width: 48px;
 }
 
-#note > h2 {
+#title > h2 {
     font-size: 36px;
     margin: 0.25rem 0 0 0;
 }
 
-#note > p {
+#title > p {
     margin: 0.25rem 0 0.25rem 0;
     line-height: 1.4rem;
     font-size: 24px;
+    overflow-y: hidden;
 }
 
-#note span {
+#title span {
     color: white;
 }
 
-#commentBottom {
+#titleBottom {
     position: relative;
     top: 2.5rem;
     left: -1rem;
 }
 
 #sidebar {
-    width: 100%;
     left: 0;
     bottom: 0;
     padding: 4rem 0.5rem 1rem 3rem;
-}
-
-#sidebar > h2 {
-    width: 50%;
-    line-height: 1;
-    margin: 0 0 0 0;
 }
 
 #sidebar > p {
@@ -195,11 +243,11 @@ a:focus, a:active, #sidebar > a:focus, #sidebar > a:active {
     padding-right: 1rem;
 }
 
-#dropcap {
+.dropcap {
     float: left;
     color: rgb(252, 114, 22);
     font-size: 400%;
-    line-height: 85%;
+    line-height: 70%;
     overflow: hidden;
 }
 
@@ -209,6 +257,10 @@ a:focus, a:active, #sidebar > a:focus, #sidebar > a:active {
     width: 100%;
     margin-top: 2.5rem;
     overflow:hidden;
+}
+
+.uv {
+    height: 29rem;
 }
 
 .attentionImg > img {
@@ -225,10 +277,6 @@ a:focus, a:active, #sidebar > a:focus, #sidebar > a:active {
     z-index: 1;
 }
 
-.attention {
-    width: 100%;
-}
-
 .attention> h1 {
     color: #fc7216;
     font-size: 300%;
@@ -242,21 +290,11 @@ a:focus, a:active, #sidebar > a:focus, #sidebar > a:active {
     background-repeat: no-repeat;
     height: 10rem;
     width:  10rem;
-    margin-left: 1rem;
+    background-position: 1rem -0.6rem;
 }
-
 
 .footer {
     grid-area: footer;
-    place-self: center;
-    justify-self: right;
     color:#a0a7ac;
-    padding: 2.5rem 0 2.5rem 0;
-    overflow:visible;
-    width: 100%;
-}
-
-.pageNum {
-    color:#000000;
-    font-size: 16px;
+    padding: 2.5rem 0 2.5rem 1rem;
 }
