@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Zilla+Slab:ital,wght@0,500;0,700;1,400&display=swap');
 
-* {
-    border: 1px red solid;
-}
-
 /* fonts used throughout the site */
 .medium {
   font-family: "Zilla Slab", serif;
