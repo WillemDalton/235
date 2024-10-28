@@ -38,20 +38,32 @@
 </div>
 
 <script>
+// some document variables used in the events
 let radioButtons = document.querySelectorAll("input");
+let info = document.getElementById("info");
+let submitButton = document.getElementById("colorButton");
 
+// arrow notation functions to update radio buttons/submit based on user's actions
 const updateRadio = (color, textElement) => {
-   textElement.innerText = `You have selected "${color}"!`;
+	document.querySelector("legend").style = color.value;
+	textElement.innerText = `You have selected "${color}"!`;
 }
 
-let info = document.getElementById("info");
+const updateSubmit = (radioButtons, textElement) => {
+	for(let button of radioButtons) {
+		if(button.checked === true) {
+			textElement.innerText = `Your FINAL CHOICE is "${button.value}!"`;
+			document.querySelector("legend").style.color = button.value;
+		}
+	}
+}
 
 for(let button of radioButtons)
 {
-    button.addEventListener("change", function(){updateRadio(button.value, info)});
+	button.addEventListener("change", function(){updateRadio(button.value, info)});
 }
 
-/* Write your code here! */
+submitButton.addEventListener("click", function(){updateSubmit(radioButtons, info)});
 </script>
 </body>
 </html>
