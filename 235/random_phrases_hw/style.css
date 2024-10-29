@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Noticia+Text:wght@400;700&family=Zilla+Slab:ital,wght@0,500;0,700;1,400&display=swap');
+
+* {
+    font-family: "Didact Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-image:url(images/swanson.jpg);
+    background-size: cover;
+}
+
+body > * {
+    width: 75%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    box-shadow: 5px 10px 10px 10px rgba(0,0,0, 0.25);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 150%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+#quote {
+    height: 5rem;
+    font-style: italic;
+    text-align: center;
+    padding: 5rem 1rem 5rem 1rem;
+    font-size: 200%;
+}
+
+button {
+    width: 30%;
+    height: 2.5rem;
+    align-self: center;
+    background-color: #631515;
+    color: white;
+    border: 5px ridge #9f1a1a;
+    font-size: 125%;
+    transition-duration: 0.25s;
+}
+
+button:hover {
+    width: 31%;
+    height: 2.75rem;
+    background-color: #7d2020;
+    color: white;
+    border: 5px ridge #c02424;
+    font-size: 125%;
+}
+
+button:active {
+    background-color: #3c1010;
+    border: 5px ridge #7c1717;
+}
+
+footer {
+    padding: 1rem 0 1rem 0;
+    text-align: center;
+}
+
+@media screen and (max-width: 850px) {
+
+    body > * {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        box-shadow: 5px 10px 10px 10px rgba(0,0,0, 0.25);
+    }
+
+    main > button {
+        width: 100%;
+    }
+
+    #quote, header {
+        font-size: 125%;
+    }
+}

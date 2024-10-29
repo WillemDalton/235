@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Random Phrases HW</title>
+</head>
+<body>
+<header>
+    <h1>What Would Ron Swanson Do?</h1>
+</header>
+<main>
+    <div id="quote">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam asperiores perferendis maiores, beatae totam itaque consequatur non corporis sed repellendus, repellat facilis adipisci iste. Neque doloremque sint facilis deserunt nihil vitae recusandae facere eum praesentium, eaque, ab sunt explicabo fugit rem officia labore impedit, voluptatibus quisquam incidunt. Earum, accusantium nemo. Cum possimus laboriosam molestias rerum voluptate rem ipsum eum assumenda corrupti error voluptatibus ullam, consectetur praesentium eius, officiis ratione, sunt obcaecati eaque. Dignissimos id ullam dicta? Ullam illum modi deleniti a consectetur nostrum at distinctio. Cupiditate veritatis, pariatur mollitia dolores, fuga impedit enim doloribus modi dignissimos quibusdam aliquam maiores repellat.</div>
+    <button>GENERATE QUOTE</button>
+    <footer>&copy2024 Willem Dalton</footer>
+</main>
+</body>
+<script>
+    "use strict";
+    let createButton = document.querySelector("button");
+    let quote = document.getElementById("quote");
+    let chosenQuote = "";
+    let quotes = [
+        `"Give a man a fish, and you feed him for a day. Don't teach a man how to fish, and you feed yourself. He's a grown man, fishing's not that hard."`,
+        `"There is no sadness that cannot be cured by breakfast food."`,
+        `"Give 100%. 110% is impossible. Only idiots recommend that."`,
+        `"There are only three ways to motivate people: money, fear, and hunger."`,
+        `"When people get too chummy with me, I like to call them by the wrong name to let them know I don’t really care about them."`,
+        `"I can’t think of anything more noble to go to war over than bacon and eggs."`,
+        `"I’d wish you the best of luck, but I believe luck is a concept created by the weak to explain their failures."`
+    ]
+
+    const createRandomQuote = () => {
+        let randomNumber  = Math.round(Math.random(0) * (quotes.length - 1));
+        chosenQuote = quotes[randomNumber];
+        quote.innerText = chosenQuote;
+    }
+
+    document.addEventListener('DOMContentLoaded', createRandomQuote);
+    createButton.addEventListener('click', createRandomQuote);
+</script>
+</html>
