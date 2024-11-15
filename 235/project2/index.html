@@ -3,10 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="main.js"></script>
+    <title>NASA PICTURE GENERATOR</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+<header>
+    <h1>PICTURE GENERATOR</h1>
+</header>
+<main>
+    <div id="control">
+        <form>
+            <label for="count">Count</label>
+            <select name="count">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+            </select>
+            <hr>
+            <label for="count">Date</label>
+            <input type="date" name="date">
+            <hr>
+            <label for="count">Range of Dates</label>
+            <label for="startdate">Start Date:</label>
+            <input type="date" name="startdate">
+            <input type="date" name="enddate">
+            <input type="submit" value="Generate!">
+        </form>
+        <h2 id="status"></h2>
+    </div>
+    <div id="gallery">
+        
+    </div>
+</main>
+<footer>
+    &copy; Willem Dalton 2024
+</footer>
+<script src="main.js"></script>
 </body>
 </html>

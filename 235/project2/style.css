@@ -1,0 +1,84 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,100;0,500;0,700;0,800;0,900;1,100;1,500;1,700&display=swap');
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100vw 50vh;
+    }
+}
+body {
+    animation: moveBackground 60s linear infinite;
+    background-color: black;
+    background-image: url("images/Stars.png");
+    color: white;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    font-family: "Tomorrow", sans-serif;
+    font-weight: 900;
+
+    background-color: rgba(111, 0, 255, 0.361);
+    border-radius: 1rem;
+    padding: 1rem 5rem 1rem 5rem;
+
+}
+
+main  {
+    font-family: "Tomorrow", sans-serif;
+    background-color: rgba(255, 255, 255, 0.361);
+
+}
+
+i {
+    font-weight: 300;
+}
+
+.error {
+    background-color: rgb(255, 87, 87);
+    border: 2px red solid;
+}
+
+#gallery {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.spaceImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+}
+
+.spaceImage > img {
+    width: 50%;
+}
+.spaceImage > p {
+    width: 50%;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+a {
+    color: rgb(111, 0, 255);
+}
+
+a:visited {
+    color: rgb(48, 2, 175);
+}
+
+a:hover {
+    color: rgb(238, 46, 255);
+}
+
+a:focus, a:active {
+    color: rgb(249, 183, 255);
+}
+
