@@ -15,7 +15,6 @@ body {
     background-color: black;
     background-image: url("images/Stars.png");
     color: white;
-    
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -24,18 +23,50 @@ body {
 header {
     font-family: "Tomorrow", sans-serif;
     font-weight: 900;
-
     background-color: rgba(111, 0, 255, 0.361);
     border-radius: 1rem;
     padding: 1rem 5rem 1rem 5rem;
-
 }
 
 main  {
+    margin-top: 1rem;
     font-family: "Tomorrow", sans-serif;
     background-color: rgba(255, 255, 255, 0.361);
-
+    width: 90%;
 }
+
+#control {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#searchoptions {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+#searchoptions > * {
+    border: 2px ridge rgb(26, 2, 92);
+}
+
+#labels {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+#labels > * {
+    border-left: 2px solid white;
+    text-align: center;
+    padding-left: 1rem;
+    font-weight: 200;
+}
+
+
 
 #submit {
     display: flex;
@@ -61,18 +92,31 @@ main  {
     background-color: rgb(48, 2, 175);
 }
 
-i {
-    font-weight: 300;
-}
-
 .error {
     background-color: rgb(255, 87, 87);
     border: 2px red solid;
 }
 
+.ignored {
+    background-color: rgb(82, 82, 82);
+    pointer-events: none;
+}
+
+.selected {
+    color: rgb(111, 0, 255);
+}
+
 #gallery {
     display:grid;
     grid-template-columns: 1fr 1fr;
+    align-self: center;
+    justify-content: center;
+}
+
+#gallery > * {
+    height: 100%;
+    align-self: center;
+    justify-self: center;
 }
 
 .spaceImage {
@@ -89,7 +133,7 @@ i {
     width: 50%;
 }
 .spaceImage > p {
-    width: 50%;
+    width: 90%;
     font-weight: 300;
     font-size: 12px;
 }
@@ -115,7 +159,5 @@ h2 {
 }
 
 footer {
-    position: absolute;
-    bottom: 1rem;
     font-family: "Tomorrow", sans-serif;
 }

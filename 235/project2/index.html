@@ -12,30 +12,30 @@
 </header>
 <main>
     <div id="control">
+        <h2>Choose one of the ways to search:</h2>
         <form>
-            <label for="count">Count</label>
-            <select name="count" id="count">
-                <option value=""></option>
-                <option value="1">1</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-            </select>
-            <hr>
-            <label for="date">Date</label>
-            <input type="date" name="date" id="date">
-            <hr>
-            <label for="startdate">Range of Dates</label>
-            <input type="date" name="startdate" id="startdate">
-            <input type="date" name="enddate" id="enddate">
+            <div id="labels">
+                <h3>by count</h3>
+                <h3>by a given date</h3>
+                <h3>by range of dates</h3>
+            </div>
+            <div id="searchoptions">
+                <select name="count" id="count">
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                </select>
+                <input type="date" name="date" id="date">
+                <input type="date" name="startdate" id="startdate">
+                <input type="date" name="enddate" id="enddate">
+            </div>
             <input type="submit" value="Generate!" id="submit">
-            <hr>
         </form>
         <h2 id="status">No results found...</h2>
     </div>
-    <div id="gallery">
-        
-    </div>
+    <div id="gallery"></div>
 </main>
 <footer>
     &copy; Willem Dalton 2024
