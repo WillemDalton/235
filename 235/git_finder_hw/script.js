@@ -24,7 +24,7 @@ function searchButtonClicked(){
     url += "&limit=" + limit;
 
     document.querySelector("#status").innerHTML =  `<b>Searching for '${displayTerm}' </b>`;
-
+    console.log(url);
     getData(url);   
 }
 
