@@ -9,6 +9,7 @@
         background-position: 100vw 50vh;
     }
 }
+
 body {
     animation: moveBackground 60s linear infinite;
     background-color: black;
@@ -36,6 +37,30 @@ main  {
 
 }
 
+#submit {
+    display: flex;
+    align-self: center;
+    background-color: rgba(111, 0, 255, 1);
+    color: white;
+    border: 2px ridge rgb(26, 2, 92);
+    border-radius: 1rem;
+    width: 90%;
+    height: 5rem;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: "Tomorrow", sans-serif;
+    margin: auto;
+    transition: all 0.1s ease-in-out
+}
+
+#submit:hover {
+    background-color: rgb(164, 46, 255);
+}
+
+#submit:active {
+    background-color: rgb(48, 2, 175);
+}
+
 i {
     font-weight: 300;
 }
@@ -55,6 +80,9 @@ i {
     flex-direction: column;
     align-items: center;
     max-width: 500px;
+    background-color: rgba(91, 91, 91, 0.589);
+    border: 5px solid rgba(111, 0, 255, 0.361);
+    border-radius: 1rem;
 }
 
 .spaceImage > img {
@@ -82,3 +110,12 @@ a:focus, a:active {
     color: rgb(249, 183, 255);
 }
 
+h2 {
+    text-align: center;
+}
+
+footer {
+    position: absolute;
+    bottom: 1rem;
+    font-family: "Tomorrow", sans-serif;
+}

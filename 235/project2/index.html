@@ -8,13 +8,13 @@
 </head>
 <body>
 <header>
-    <h1>PICTURE GENERATOR</h1>
+    <h1>NASA PICTURE GENERATOR</h1>
 </header>
 <main>
     <div id="control">
         <form>
             <label for="count">Count</label>
-            <select name="count">
+            <select name="count" id="count">
                 <option value=""></option>
                 <option value="1">1</option>
                 <option value="5">5</option>
@@ -22,16 +22,16 @@
                 <option value="25">25</option>
             </select>
             <hr>
-            <label for="count">Date</label>
-            <input type="date" name="date">
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date">
             <hr>
-            <label for="count">Range of Dates</label>
-            <label for="startdate">Start Date:</label>
-            <input type="date" name="startdate">
-            <input type="date" name="enddate">
-            <input type="submit" value="Generate!">
+            <label for="startdate">Range of Dates</label>
+            <input type="date" name="startdate" id="startdate">
+            <input type="date" name="enddate" id="enddate">
+            <input type="submit" value="Generate!" id="submit">
+            <hr>
         </form>
-        <h2 id="status"></h2>
+        <h2 id="status">No results found...</h2>
     </div>
     <div id="gallery">
         

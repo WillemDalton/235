@@ -1,19 +1,35 @@
 const API_KEY = "ilzCDb4pvfIUNWJWOkDTO2evNm9pYopHka9izhyC"
 const API_URL = "https://api.nasa.gov/planetary/apod"
 let url = "";
-let count;
 let data;
-let startDate;
-let endDate;
-
-
-// url += API_URL;
-// url += "?api_key=" + API_KEY;
-// url += "&count=" + COUNT;
-
 let form = document.querySelector("form");
 let state = document.getElementById("status");
 let gallery = document.getElementById("gallery");
+
+let dateToday = new Date()
+let day = dateToday.getDate();
+let month = dateToday.getMonth() + 1;
+let year = dateToday.getFullYear();
+dateToday = `${year}-${month}-${day}`; 
+
+let count;
+const storedCount = 25;
+if(storedCount)
+{
+
+    document.getElementById("count").value = storedCount;
+}
+
+let startDate;
+// const storedStart = localStorage.getItem(startKey);
+// if(storedCount)
+// {
+//     document.getElementById("count").querySelector(storedCount).setAttributeNode("selected") = storedCount;
+// }
+let endDate;
+let date;
+// const storedEnd = localStorage.getItem(endKey);
+// const storedDate= localStorage.getItem(dateKey);
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -54,8 +70,9 @@ form.addEventListener("submit", (e) => {
         state.innerHTML = "WARNING! Count cannot be used with date or start/end date"
         state.style.color = "255 0 0";
     }
-    else if( data != "" && (startDate != "" || endDate != ""))
-    {
+    else if( date != "" && (startDate != "" || endDate != ""))
+        {
+        console.log(date != "");
         WarnHTMLElement(document.querySelector("input"));
         state.innerHTML = "WARNING! both date and start/end date cannot be used at the same time.";
         state.style.color = "255 0 0";  
@@ -67,11 +84,22 @@ form.addEventListener("submit", (e) => {
         state.innerHTML = "Please fill out some section of the form to generate images!";
         state.style.color = "255 0 0";  
     }
+    else if(startDate < "1995-06-16")
+    {
+        WarnHTMLElement(document.getElementById("startDate"));
+        state.innerHTML = "Please pick a start date after June 16th, 1995!";
+        state.style.color = "255 0 0";  
+    }
+    else if(endDate > dateToday)
+    {
+        WarnHTMLElement(document.getElementById("endDate"));
+        state.innerHTML = `please pick a valid date that has already occured. Use "today" for today's image.`;
+        state.style.color = "255 0 0";  
+    }
     else
     {
         for(element of document.querySelector("form"))
         {
-            console.log(element);
             if(element.classList.contains("error"))
             {
                 element.classList.remove("error");
