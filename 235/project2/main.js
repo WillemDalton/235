@@ -145,9 +145,16 @@ const GetData = (url) => {
         .then(data => {
             // reset url
             url = "";
-            for(let item of data)
-            {   
-                CreateHTMLElement(item);
+            if(data.length > 1)
+            {
+                for(let item of data)
+                {   
+                    CreateHTMLElement(item);
+                }
+            }
+            else 
+            {
+                CreateHTMLElement(data);
             }
             state.innerHTML = '';
         })
@@ -197,15 +204,6 @@ const WarnHTMLElements = (elements) => {
 // gray out invalid options in
 const GrayOutOptions = (element) => {
     let options = document.querySelectorAll("#searchoptions > *");
-
-    // if our element is empty, un gray them out!
-    if(element.value === "")
-    {
-        for(let option of options)
-            {
-                option.classList.remove("ignored");
-            }
-    }
     // run through all our search options
     for(let option of options)
     { 
@@ -221,6 +219,16 @@ const GrayOutOptions = (element) => {
                 option.classList.add("ignored"); 
             }
         }
+    }
+
+    // if our element is empty, un gray them out!
+    if(element.value == "")
+        {
+            for(let option of options)
+                {
+                    console.log(option);
+                    option.classList.remove("ignored");
+                }
     }
 }
 
