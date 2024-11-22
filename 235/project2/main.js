@@ -6,59 +6,45 @@ let data;
 
 // html nodes
 let form = document.querySelector("form");
-let state = document.getElementById("status");
-let gallery = document.getElementById("gallery");
-let countElement = document.getElementById("count");
-let dateElement = document.getElementById("date")
-let startDateElement = document.getElementById("startdate");
-let endDateElement = document.getElementById("enddate");
+let state = document.querySelector("#status");
+let gallery = document.querySelector("#gallery");
+let countElement = document.querySelector("#count");
+let dateElement = document.querySelector("#date");
+let startDateElement = document.querySelector("#startdate");
+let endDateElement = document.querySelector("#enddate")
 
 // calulate our today's date for future api logic
-let dateToday = new Date()
+let dateToday = new Date();
 let day = dateToday.getDate();
 let month = dateToday.getMonth() + 1;
 let year = dateToday.getFullYear();
 dateToday = `${year}-${month}-${day}`; 
 
-// check our local storage to see if any values are saved, also holds some update logic for query buttons
-const checkStorage = (storedData, dataKey, elementToChange) =>
-{
-    if(storedData)
-    {
-        elementToChange.value = storedData
-    }
-    elementToChange.onchange = e=>
-    { 
-        GrayOutOptions(elementToChange);
-        HighlightSelected(elementToChange);
-        localStorage.setItem(dataKey, e.target.value); 
-    };
-}
-
-//  count of random images to create
+//data
 let count;
-const storedCount = localStorage.getItem("count");
-checkStorage(storedCount, "count", countElement);
-
-// date
 let date;
-const storedDate = localStorage.getItem("date");
-checkStorage(storedDate, "date", dateElement);
-
-// start date and end date of range
 let startDate;
-const storedStart = localStorage.getItem("startDate");
-checkStorage(storedStart, "startDate", startDateElement);
 let endDate;
-const storedEnd = localStorage.getItem("endDate");
-checkStorage(storedEnd, "endDate", endDateElement);
+
+// Load saved gallery
+document.addEventListener("DOMContentLoaded", () => {
+    let storedGallery = localStorage.getItem("gallery");
+    if(storedGallery)
+    {
+        gallery.innerHTML = storedGallery;
+        state.innerHTML = '';
+    }
+    else
+    {
+        gallery.innerHTML = "";
+    }
+})
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     state.innerHTML = 'Loading...';
+    gallery.innerHTML = "";
 
-    // clear gallery beofre trying to load new images
-    gallery.innerHTML = '';
     // grab all form data
     let formData = new FormData(form);
     let formArray = Object.fromEntries(formData);
@@ -87,52 +73,33 @@ form.addEventListener("submit", (e) => {
         url +=  "&end_date=" + endDate;
     }
 
-    /* simple error handling for some scenario */
-    // if we fill out count along with other data.
-    if(count != "" && (startDate != "" || endDate != "" || date != ""))
-    {
-        WarnHTMLElement(document.querySelector("select"));
-        state.innerHTML = "WARNING! Count cannot be used with date or start/end date"
-        state.style.color = "255 0 0";
-    }
-    // if we fill out both range date and given date
-    else if( date != "" && (startDate != "" || endDate != ""))
-    {
-        WarnHTMLElement(document.querySelector("input"));
-        state.innerHTML = "WARNING! both date and start/end date cannot be used at the same time.";
-        state.style.color = "255 0 0";  
-    }
+    /* simple error handling...realistically, none of this should happen with display: none, but it's good to be safe*/
     // if we fill out nothing
-    else if(count === "" && startDate === "" && endDate === "" && date === "")
+    if(count === "" && startDate === "" && endDate === "" && date === "")
     {
-        WarnHTMLElement(document.querySelector("select"));
-        WarnHTMLElements(document.querySelectorAll("input"));
         state.innerHTML = "Please fill out some section of the form to generate images!";
         state.style.color = "255 0 0";  
     }
-    // if we pick a start date too early
-    else if((startDate != "") && (startDate < "1995-06-16"))
+    // if we pick a falsy start date
+    else if((startDate != "") && ((startDate < "1995-06-16") || (startDate > dateToday) || (startDate > endDate)))
     {
-        WarnHTMLElement(document.getElementById("startDate"));
-        state.innerHTML = "Please pick a start date after June 16th, 1995!";
+        state.innerHTML = "Please pick a valid start date, date is too early or too late!";
         state.style.color = "255 0 0";  
     }
-    // if we pick a day that hasn't happened...yet?
-    else if((endDate != "") && (endDate > dateToday))
+    // if we pick a falsy end date
+    else if((startDate != "") && ((startDate < "1995-06-16") || (startDate > dateToday) || (endDate < startDate)))
     {
-        WarnHTMLElement(document.getElementById("endDate"));
-        state.innerHTML = `please pick a valid date that has already occured. Use "today" for today's image.`;
+        state.innerHTML = `please pick a valid end date.`;
+        state.style.color = "255 0 0";  
+    }
+    // if we pick a falsy date
+    else if((date != "") && ((date < "1995-06-16") || (date > dateToday)))
+    {
+        state.innerHTML = "Please pick a valid date!";
         state.style.color = "255 0 0";  
     }
     else
     {
-        for(element of document.querySelector("form"))
-        {
-            if(element.classList.contains("error"))
-            {
-                element.classList.remove("error");
-            }
-        }
         GetData(url);
     }
     url = "";
@@ -145,17 +112,26 @@ const GetData = (url) => {
         .then(data => {
             // reset url
             url = "";
-            if(data.length > 1)
+            if(data != undefined)
             {
-                for(let item of data)
-                {   
-                    CreateHTMLElement(item);
+                if(data.length > 1)
+                {
+                    for(let item of data)
+                    {   
+                        CreateHTMLElement(item);
+                    }
+                }
+                else if(data[0] != undefined)
+                {
+                    CreateHTMLElement(data[0]);
+                }
+                else 
+                {
+                    CreateHTMLElement(data);
                 }
             }
-            else 
-            {
-                CreateHTMLElement(data);
-            }
+    
+            localStorage.setItem("gallery", gallery.innerHTML);
             state.innerHTML = '';
         })
 }
@@ -165,45 +141,41 @@ const CreateHTMLElement = (content) => {
     let div = document.createElement("div");
     div.classList.add("spaceImage");
 
+    let media;
+    if(content.media_type === "video")
+    {
+        media = document.createElement("iframe");
+        media.width = "320";
+        media.height = "240";
+        media.src = content.url;   
+    }
+    else {
+        media = document.createElement("img");
+        media.src = content.url;
+    }
+    
     let title = document.createElement("a");
     title.target = "_blank"
     title.innerText = content.title;
     title.href = content.url;
-
+    
     let date = document.createElement("h4");
     date.innerHTML = content.date;
-
+    
     let description = document.createElement("p");
     description.innerHTML = content.explanation;
-
-    let image = document.createElement("img");
-    image.src = content.url;
-
-    console.log(content)
-
-    div.appendChild(image);
+    
+    div.appendChild(media);
     div.appendChild(title);
     div.appendChild(date);
     div.appendChild(description);
     gallery.appendChild(div);
 }
 
-// warn an element with conflicting data that could cause an error
-const WarnHTMLElement = (element) => {
-    element.classList.add("error");
-}
-
-// for when we want to warn the children of an element
-const WarnHTMLElements = (elements) => {
-    for(let item of elements)
-    {
-        item.classList.add("error");
-    }
-}
-
 // gray out invalid options in
-const GrayOutOptions = (element) => {
-    let options = document.querySelectorAll("#searchoptions > *");
+const HideOptions = (element) => {
+
+    let options = document.querySelectorAll("form > select, form input:not(#submit)");
     // run through all our search options
     for(let option of options)
     { 
@@ -223,15 +195,15 @@ const GrayOutOptions = (element) => {
 
     // if our element is empty, un gray them out!
     if(element.value == "")
-        {
+    {
             for(let option of options)
-                {
-                    console.log(option);
-                    option.classList.remove("ignored");
-                }
+            {
+                option.classList.remove("ignored");
+            }
     }
 }
 
-const HighlightSelected = (element) => {
-
-} 
+countElement.onchange = ()=>HideOptions(countElement);
+dateElement.onchange = ()=>HideOptions(dateElement);
+startDateElement.onchange = ()=>HideOptions(startDateElement);
+endDateElement.onchange = ()=>HideOptions(endDateElement);
