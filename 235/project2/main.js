@@ -134,6 +134,9 @@ const GetData = (url) => {
             localStorage.setItem("gallery", gallery.innerHTML);
             state.innerHTML = '';
         })
+        .catch(error => {
+            state.innerHTML = error;
+        })
 }
 
 //create HTMl element based on data we are given from API
@@ -142,6 +145,7 @@ const CreateHTMLElement = (content) => {
     div.classList.add("spaceImage");
 
     let media;
+    // if our media is an image, have to format differently.
     if(content.media_type === "video")
     {
         media = document.createElement("iframe");

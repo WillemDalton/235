@@ -160,3 +160,9 @@ h2 {
 footer {
     font-family: "Tomorrow", sans-serif;
 }
+
+@media screen and (max-width: 850px) {
+    #gallery {
+        grid-template-columns: 1fr;
+    }
+}
