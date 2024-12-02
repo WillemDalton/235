@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&display=swap');
+
+body {
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: "Lexend Exa", sans-serif;
+}
+
+header {
+    font-size: 48px;
+    text-align: center;
+    font-weight: 700;
+
+}
+
+main {
+    width: 75vh;
+    height: 75vh;
+}
+
+.garden {
+    width: 100%;
+    height: 100%;
+    background-color: bisque;
+    border: 10px solid rgb(105, 77, 49);
+}
+
+footer {
+    text-align: center;
+    font-weight: 300;
+}
+
