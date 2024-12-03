@@ -28,6 +28,18 @@ main {
     border: 10px solid rgb(105, 77, 49);
 }
 
+svg {
+    width: 100%;
+    height: 100%;
+}
+
+line {
+    stroke:rgb(105, 77, 49);
+    stroke-width: 14px;
+    stroke-linecap: round;
+}
+
+
 footer {
     text-align: center;
     font-weight: 300;
