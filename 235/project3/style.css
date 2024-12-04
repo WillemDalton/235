@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&display=swap');
 
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100vw 50vh;
+    }
+}
+
+
 body {
     display: grid;
     grid-template-rows: 50px 1fr 50px;
@@ -7,6 +17,8 @@ body {
     justify-content: center;
     height: 100vh;
     font-family: "Lexend Exa", sans-serif;
+    background-image: url("source/rocks.png");
+    animation: moveBackground 240s linear infinite;
 }
 
 header {
@@ -34,8 +46,8 @@ svg {
 }
 
 line {
-    stroke:rgb(105, 77, 49);
-    stroke-width: 14px;
+    stroke:rgb(209, 178, 147);
+    stroke-width: 10px;
     stroke-linecap: round;
 }
 

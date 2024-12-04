@@ -4,30 +4,28 @@ canvas.appendChild(svg);
 
 let isDrawing = false;
 
-let storedX = 0;
-let storedY = 0;
+let storedX;
+let storedY;
+
+const rect = canvas.getBoundingClientRect();      
 
 
 // when the mouse is down, we wanna draw.
 document.addEventListener("mousedown", (event) =>
 {
-    storedX = event.clientX;
-    storedY = event.clientY;
+    storedX = event.clientX - rect.left;
+    storedY = event.clientY - rect.top;
 
     isDrawing = true;
 });
 
 document.addEventListener("mouseup", (event) => {
 
-    storedX = event.clientX;
-    storedY = event.clientY;
 
     isDrawing = false;
 })
 
-document.addEventListener("mousemove", (event) => {
-
-    const rect = canvas.getBoundingClientRect();      
+document.addEventListener("mousemove", (event) => {    
     if(isDrawing)
     {
         const x = event.clientX - rect.left;
@@ -54,3 +52,22 @@ const createLine = (startPosX, startPosY, endPosX, endPosY) =>
 
     svg.appendChild(line);
 }
+
+const is_key_down = (() => {
+    const state = {};
+
+    window.addEventListener('keyup', (e) => state[e.key] = false);
+    window.addEventListener('keydown', (e) => state[e.key] = true);
+
+    return (key) => state.hasOwnProperty(key) && state[key] || false;
+})();
+
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'z') {
+        if(svg.lastChild != undefined)
+        {
+            svg.removeChild(svg.lastChild);
+        }
+    }
+});
