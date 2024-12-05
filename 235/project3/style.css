@@ -4,6 +4,7 @@
     0% {
         background-position: 0 0;
     }
+
     100% {
         background-position: -100vw 50vh;
     }
@@ -11,14 +12,16 @@
 
 
 body {
+    overflow: hidden;
     display: grid;
     grid-template-rows: 50px 1fr 50px;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
     font-family: "Lexend Exa", sans-serif;
     background-image: url("source/rocks.png");
     animation: moveBackground 240s linear infinite;
+    background-color: #b6d5b6;
 }
 
 header {
@@ -29,13 +32,19 @@ header {
 }
 
 main {
+    height: max-content;
     width: 75vh;
-    height: 75vh;
+}
+
+main>p {
+    font-style: italic;
+    font-weight: 300;
+    text-align: center;
 }
 
 .garden {
     width: 100%;
-    height: 100%;
+    height: 75vh;
     background-color: bisque;
     box-sizing: border-box;
     border: 10px solid rgb(105, 77, 49);
@@ -47,15 +56,19 @@ svg {
 }
 
 line {
-    stroke:rgb(209, 178, 147);
+    stroke: rgb(209, 178, 147);
     stroke-width: 10px;
     stroke-linecap: round;
 }
 
 circle {
     fill: none;
-    stroke:rgb(209, 178, 147);
+    stroke: rgb(209, 178, 147);
     stroke-width: 10px;
+}
+
+.stencil {
+    opacity: 50%;
 }
 
 .control {
@@ -67,13 +80,17 @@ circle {
     gap: 10px;
 }
 
+.selected {
+    background-color: rgb(112, 84, 57);
+}
+
 button {
     border: 5px solid rgb(105, 77, 49);
     background-color: rgb(163, 130, 90);
     width: 25%;
 }
 
-button > img {
+button>img {
     width: 50px;
 }
 
@@ -81,4 +98,3 @@ footer {
     text-align: center;
     font-weight: 300;
 }
-
