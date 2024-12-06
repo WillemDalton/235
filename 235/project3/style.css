@@ -19,7 +19,8 @@ body {
     justify-content: center;
     height: 100%;
     font-family: "Lexend Exa", sans-serif;
-    background-image: url("source/rocks.png");
+    background-image: url("source/leaves.png");
+    background-blend-mode: multiply;
     animation: moveBackground 240s linear infinite;
     background-color: #b6d5b6;
 }
@@ -28,6 +29,8 @@ header {
     font-size: 48px;
     text-align: center;
     font-weight: 700;
+    color: rgba(0, 41, 5, 0.849);
+    mix-blend-mode: hard-light;
 
 }
 
@@ -38,8 +41,10 @@ main {
 
 main>p {
     font-style: italic;
-    font-weight: 300;
+    font-weight: 700;
     text-align: center;
+    color: rgba(0, 41, 5, 0.849);
+    mix-blend-mode: hard-light;
 }
 
 .garden {
@@ -97,4 +102,6 @@ button>img {
 footer {
     text-align: center;
     font-weight: 300;
+    color: rgba(0, 41, 5, 0.849);
+    mix-blend-mode: hard-light;
 }

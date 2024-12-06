@@ -40,7 +40,14 @@ document.addEventListener("mousedown", (event) => {
     storedX = event.clientX - rect.left;
     storedY = event.clientY - rect.top;
 
-    isDrawing = true;
+    // we only want to start drawing IF the player clicks in the rectangle.
+    if (
+        event.clientX >= rect.x &&
+        event.clientX <= rect.x + rect.width &&
+        event.clientY >= rect.y &&
+        event.clientY <= rect.y + rect.height) {
+        isDrawing = true;
+    }
 
     if (lineMode === "circle") {
         createCircle(storedX, storedY);
