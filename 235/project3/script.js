@@ -47,11 +47,11 @@ document.addEventListener("mousedown", (event) => {
         event.clientY >= rect.y &&
         event.clientY <= rect.y + rect.height) {
         isDrawing = true;
+        if (lineMode === "circle") {
+            createCircle(storedX, storedY);
+        }
     }
 
-    if (lineMode === "circle") {
-        createCircle(storedX, storedY);
-    }
 });
 
 document.addEventListener("mouseup", (event) => {
@@ -75,6 +75,11 @@ document.addEventListener("mousemove", (event) => {
     }
     if (lineMode === "circle") {
         createStencilCircle(x, y)
+    }
+    else if (stencil.lastElementChild != null) {
+
+        console.log(stencil.lastElementChild)
+        stencil.removeChild(stencil.lastElementChild);
     }
 });
 
