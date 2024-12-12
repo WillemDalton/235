@@ -38,6 +38,7 @@ header > h1 {
     color: rgb(0, 41, 5);
     border: 5px solid rgb(38, 87, 51);
     background-color: #a0d8a0;
+    user-select: none;
 }
 
 main {
@@ -50,9 +51,9 @@ main {
     color: rgba(136, 103, 71, 0.843);
     font-style: italic;
     text-align: center;
-    position: relative;
-    margin-bottom: -10vh;
+    position: absolute;
     top: 40%;
+    width: 100%;
     transition: all 5s linear;
     user-select: none;
 }
@@ -71,11 +72,13 @@ main {
     background-blend-mode:darken;
     box-sizing: border-box;
     border: 5px solid rgb(105, 77, 49);
+    position: relative;
 }
 
 svg {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 line {
@@ -115,6 +118,7 @@ button {
 
 button>img {
     width: 25px;
+    user-select: none;
 }
 
 footer {

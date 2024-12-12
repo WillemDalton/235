@@ -9,6 +9,41 @@ stencil.setAttribute("id", "stencil");
 svg.appendChild(stencil);
 canvas.appendChild(svg);
 
+class Brush {
+
+    constructor(radius, spacing)
+    {
+        this.radius = radius;
+        this.spacing = spacing;
+    }
+
+    increaseRadius()
+    {
+        if (this.radius < 250) {
+            this.radius += 25;
+        }
+    }
+
+    decreaseRadius()
+    {
+        if (this.radius > 25) {
+            this.radius -= 25;
+        }
+    }
+
+    increaseSpacing() {
+        if (this.spacing < 50) {
+            this.spacing += 3
+        }
+    }
+
+    decreaseSpacing()
+    {
+        if (this.spacing > 1) {
+            this.spacing -= 3
+        }
+    }
+}
 // sfx
 const sandSound = new Audio('sounds/sand.wav'); 
 sandSound.volume = 0.1;
@@ -23,8 +58,7 @@ let lineMode = "draw";
 let isDrawing = false;
 let storedX;
 let storedY;
-let circleR = 25;
-let spacing = 25;
+const brush = new Brush(25, 25);
 
 // button logic
 controls[0].addEventListener("click", () => {
@@ -84,7 +118,7 @@ document.addEventListener("mousemove", (event) => {
         if (lineMode === "draw") {
             // if the distance between line is greater than 5px, we wanna draw!
             if (Math.sqrt(Math.pow((x - storedX), 2) + Math.pow((y - storedY), 2)) > 15) {
-                svg.appendChild(createLine(storedX, storedY, x, y, spacing));
+                svg.appendChild(createLine(storedX, storedY, x, y, brush.spacing));
                 storedX = x;
                 storedY = y;
             }
@@ -96,7 +130,7 @@ document.addEventListener("mousemove", (event) => {
         storedY = y;
     }
     else if (lineMode === "draw" && !isDrawing) {
-        createStencilLine(x, y, spacing);
+        createStencilLine(x, y, brush.spacing);
         storedX = x;
         storedY = y;
     }
@@ -113,7 +147,7 @@ const createCircle = (x, y) => {
     
     circle.setAttribute("cx", x);
     circle.setAttribute("cy", y)
-    circle.setAttribute("r", circleR);
+    circle.setAttribute("r", brush.radius);
 
     return circle;
 }
@@ -206,12 +240,8 @@ document.addEventListener('keydown', function (event) {
 // when the user presses e, increase brush radius
 document.addEventListener('keydown', function (event) {
     if (event.key === 'e') {
-        if (circleR < 250) {
-            circleR += 25;
-        }
-        if (spacing < 50) {
-            spacing += 3
-        }
+        brush.increaseRadius();
+        brush.increaseSpacing();
     }
     if(lineMode === "circle")
     {
@@ -219,19 +249,15 @@ document.addEventListener('keydown', function (event) {
     }
     else if(lineMode === "draw")
     {
-        createStencilLine(storedX, storedY, spacing);
+        createStencilLine(storedX, storedY, brush.spacing);
     }
 });
 
 // when the user presses q, shrink brush
 document.addEventListener('keydown', function (event) {
     if (event.key === 'q') {
-        if (circleR > 25) {
-            circleR -= 25;
-        }
-        if (spacing > 1) {
-            spacing -= 3
-        }
+        brush.decreaseRadius();
+        brush.decreaseSpacing();
     }
     if(lineMode === "circle")
     {
@@ -239,6 +265,6 @@ document.addEventListener('keydown', function (event) {
     }
     else if(lineMode === "draw")
     {
-        createStencilLine(storedX, storedY, spacing);
+        createStencilLine(storedX, storedY, brush.spacing);
     }
 });
