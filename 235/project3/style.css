@@ -17,9 +17,10 @@ html {
 body {
     overflow: hidden;
     display: grid;
-    grid-template-rows: 50px 1fr 50px;
+    grid-template-rows: 10vh 1fr 5vh;
     align-items: center;
     justify-content: center;
+    justify-items: center;
     height: 100vh;
     font-family: "Lexend Exa", sans-serif;
     background-image: url("source/leaves.png");
@@ -28,13 +29,15 @@ body {
     background-color: #b6d5b6;
 }
 
-header {
+header > h1 {
+    align-self: center;
     font-size: 36px;
     text-align: center;
+    padding: 0 1rem;
     font-weight: 700;
-    color: rgba(0, 41, 5, 0.849);
-    mix-blend-mode: hard-light;
-
+    color: rgb(0, 41, 5);
+    border: 5px solid rgb(38, 87, 51);
+    background-color: #a0d8a0;
 }
 
 main {
@@ -42,20 +45,30 @@ main {
     width: 75vh;
 }
 
-main>p {
+.intro {
+    opacity: 100%;
+    color: rgba(136, 103, 71, 0.843);
     font-style: italic;
-    font-size: 12px;
-    font-weight: 700;
     text-align: center;
-    color: rgba(0, 41, 5, 0.849);
-    mix-blend-mode: hard-light;
-    margin: 3px;
+    position: relative;
+    margin-bottom: -10vh;
+    top: 40%;
+    transition: all 5s linear;
+    user-select: none;
+}
+
+.removed {
+    opacity: 0%;
 }
 
 .garden {
     width: 100%;
     height: 75vh;
+    background-image: url("source/sand.jpg");
+    background-size: 150%;
+    image-rendering: pixelated;
     background-color: bisque;
+    background-blend-mode:darken;
     box-sizing: border-box;
     border: 5px solid rgb(105, 77, 49);
 }
@@ -66,14 +79,14 @@ svg {
 }
 
 line {
-    stroke: rgb(209, 178, 147);
+    stroke: rgb(195, 154, 94);
     stroke-width: 10px;
     stroke-linecap: round;
 }
 
 circle {
     fill: none;
-    stroke: rgb(209, 178, 147);
+    stroke: rgb(195, 154, 94);
     stroke-width: 10px;
 }
 
@@ -111,3 +124,7 @@ footer {
     mix-blend-mode: hard-light;
     margin: 0;
 }
+
+a {
+    color: rgb(0, 41, 5);
+}   
